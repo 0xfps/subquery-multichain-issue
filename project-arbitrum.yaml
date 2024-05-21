@@ -1,0 +1,161 @@
+# // Auto-generated , DO NOT EDIT
+specVersion: 1.0.0
+version: 0.0.1
+name: arbitrum-one-starter
+description: >-
+  This project can be use as a starting point for developing your new Arbitrum
+  One SubQuery project
+runner:
+  node:
+    name: '@subql/node-ethereum'
+    version: '>=3.0.0'
+  query:
+    name: '@subql/query'
+    version: '*'
+schema:
+  file: ./schema.graphql
+network:
+  chainId: '42161'
+  endpoint:
+      https://arbitrum.rpc.subquery.network/public
+dataSources:
+  ## Arbitrum Bridged USDC (USDC.e).
+  - kind: ethereum/Runtime
+    startBlock: 2609
+    options:
+      abi: erc20
+      address: '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8'
+    assets:
+      erc20:
+        file: ./abis/erc20.abi.json
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - kind: ethereum/LogHandler
+          handler: handleArbitrumLog
+          filter:
+            topics:
+              - >-
+                Transfer(address indexed from, address indexed to, uint256
+                amount)
+
+  ## Arbitrum USDT.
+  - kind: ethereum/Runtime
+    startBlock: 228105
+    options:
+      abi: erc20
+      address: '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'
+    assets:
+      erc20:
+        file: ./abis/erc20.abi.json
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - kind: ethereum/LogHandler
+          handler: handleArbitrumLog
+          filter:
+            topics:
+              - >-
+                Transfer(address indexed from, address indexed to, uint256
+                amount)
+
+  ## Arbitrum Native ETH.
+  - kind: ethereum/Runtime
+    startBlock: 228105
+    options:
+      abi: erc20
+      address: '0x'
+    assets:
+      erc20:
+        file: ./abis/erc20.abi.json
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - kind: ethereum/LogHandler
+          handler: handleArbitrumLogETH
+          filter:
+            topics:
+              - >-
+                Transfer(address indexed from, address indexed to, uint256
+                amount)
+
+  ## Arbitrum WETH.
+  - kind: ethereum/Runtime
+    startBlock: 55
+    options:
+      abi: erc20
+      address: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
+    assets:
+      erc20:
+        file: ./abis/erc20.abi.json
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - kind: ethereum/LogHandler
+          handler: handleArbitrumLog
+          filter:
+            topics:
+              - >-
+                Transfer(address indexed from, address indexed to, uint256
+                amount)
+
+  ## Arbitrum WSTETH.
+  - kind: ethereum/Runtime
+    startBlock: 19364208
+    options:
+      abi: erc20
+      address: '0x5979d7b546e38e414f7e9822514be443a4800529'
+    assets:
+      erc20:
+        file: ./abis/erc20.abi.json
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - kind: ethereum/LogHandler
+          handler: handleArbitrumLog
+          filter:
+            topics:
+              - >-
+                Transfer(address indexed from, address indexed to, uint256
+                amount)
+
+  ## Arbitrum PXETH.
+  - kind: ethereum/Runtime
+    startBlock: 185549499
+    options:
+      abi: erc20
+      address: '0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4'
+    assets:
+      erc20:
+        file: ./abis/erc20.abi.json
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - kind: ethereum/LogHandler
+          handler: handleArbitrumLog
+          filter:
+            topics:
+              - >-
+                Transfer(address indexed from, address indexed to, uint256
+                amount)
+
+  ## Arbitrum APXETH.
+  - kind: ethereum/Runtime
+    startBlock: 185871529
+    options:
+      abi: erc20
+      address: '0x16Ed8E219cde31E14a80dCb6C9127A5EC6e88e46'
+    assets:
+      erc20:
+        file: ./abis/erc20.abi.json
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - kind: ethereum/LogHandler
+          handler: handleArbitrumLog
+          filter:
+            topics:
+              - >-
+                Transfer(address indexed from, address indexed to, uint256
+                amount)
+repository: https://github.com/subquery/ethereum-subql-starter
