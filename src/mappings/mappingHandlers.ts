@@ -6,6 +6,10 @@ import assert from "assert";
 
 const DUMMY_ETH_ADDRESS = "0x0000000000000000000000000000000000000012"
 
+function randomNum(): number {
+  return Math.floor(Math.random() * 1000000000)
+}
+
 export async function handleArbitrumLog(log: TransferLog): Promise<void> {
   logger.info(`New transfer transaction log at block ${log.blockNumber}`);
   assert(log.args, "No log.args");
@@ -20,7 +24,7 @@ export async function handleArbitrumLogETH(log: TransferLog): Promise<void> {
 
 async function handleEvent(log: TransferLog, network: string, type: "native" | "contract") {
   const transaction = Transfer.create({
-    id: `${network}-${log.transactionHash}-${new Date().getTime()}-${log.blockNumber}-${log.transactionIndex}-${log.logIndex}`,
+    id: `${network}-${log.transactionHash}-${new Date().getTime()}-${randomNum()}-${log.blockNumber}-${log.transactionIndex}-${log.logIndex}`,
     blockHeight: BigInt(log.blockNumber),
     // @ts-ignore
     to: log.args.to,
